@@ -1,20 +1,17 @@
-YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-Am stat destul de mult si m-am enervat la fel de mult(mai mult?) scriind la
-tema asta, insa dupa o rearanjare in cod, m-am trezit cu relativ putine (imo)
-linii. Nu sunt suparata de asta.
-_____________________________________Main______________________________________
+# Void array generic
 
-in main se intampla multe. as prefera sa nu intru in tot legat de ce s-a 
+Un vector de tip void care respecta o anumita forma. Elementul cheie al programului este folosirea de memmove si de memcpy, datorata faptului ca vectorul este de tip void.
+Functionalitatile sunt explicate mai jos.
+
+## Main
+In main se intampla multe. as prefera sa nu intru in tot legat de ce s-a 
 initializat, insa important de alocat ar fi header-ul, datele retinute, array-ul
-(array ul se aloca in functie) si structura. in rest sunt multe chestii 
+(array ul se aloca in functie) si structura. In rest sunt multe chestii 
 ajutatoare statice.
-buffer-ul citeste o linie, si se opreste cand se citeste secventa 'exit';
-strstr mi se pare mai friendly decat strcmp, dar e tot aia pana la urma.
-tot cu strstr se verifica si comenzile, si asta e planuit: inserturile
-le fac in aceeasi secventa, avand in vedere ca add_at e doar un caz 
-particular de add_last. (sau invers?)
-ce e cel mai important in main e ce se intampla in insert; aici se afla
-informatia de introdus in structura de date:
+Buffer-ul citeste o linie, si se opreste cand se citeste secventa 'exit'.
+Cu strstr se verifica comenzile: inserturile le fac in aceeasi secventa, avand in vedere ca add_at e doar un caz particular de add_last.
+
+Ce e cel mai important in main e ce se intampla in insert; aici se afla informatia de introdus in structura de date:
 - verific la inceput daca insertul este simplu sau insert_at si aflu indexul
 din timp
 - verific tipul, deci felul in care adaug elementul
@@ -28,7 +25,7 @@ lungimea totala a datelor, deci va fi atribuit lui data->header->len
 - eliberez data pt a adauga date noi dupa
 in rest cum am zis verific restul functiilor
 
-____________________________________Insert_____________________________________
+## Insert
 
 - se verifica daca vectorul e gol, se aloca daca da, se parcurge vectorul pentru 
 a afla lungimea si se realoca cu lungimea aflata + lungimea din data;
@@ -38,21 +35,13 @@ size-urile la amandoua deci stim cat de adauga si cum.
 - daca nu s a adaugat se returneaza o eroare
 - altfel creste len-ul aka nr de elemente
 
-aceeasi logica se aplica si la add_at:
+Aceeasi logica se aplica si la add_at:
 - aflam 'marginile' noastre, cea dinainte de pct de adaugare si finalul vectorului
 - pt a pregati vectorul, se aloca lungimea finala + data->header->len si se muta 
 tot ce e dupa pre_add_len cu data->header->len spatii mai in fata
 - introduci elementele ca mai sus
 
-____________________________________Delete_____________________________________
-
--pas 1: scoti abacul
--pas 2: inveti matematica sa vezi cat adaugi/scazi ca sa fie datele fericite
--pas 3: ?????
--pas 4: profit
-
-am stat prea mult pt ca am refuzat sa scot o foaie si mi faceam calculele in aer
-am meritat asta
+## Delete
 
 - aflu 'marginile' si aici, adica de unde incep stergerea, cat am de sters, si
 lungimea efectiva. stiind astea 3, am produs matematica.
@@ -65,9 +54,9 @@ totul la stanga cu lungime_elem_de_sters pozitii
 - verific erori(cumva?)
 - scad lenul
 
-____________________________________Print______________________________________
+## Print
 
-am un cursor amuzant care se tot muta, o data isi afla tipul si apoi introduc
+Am un 'cursor' care se tot muta, o data isi afla tipul si apoi introduc
 functia de printare a unui sg element. o sa detaliez despre ea aici. o apelez
 de len ori aici.
 
@@ -79,10 +68,7 @@ si cu acel cursor. aici se afla top 10 linii lungi, refuz sa explic mai mult.
 - fun fact: pot printa cu %s multumita terminatoarelor de sir. multumesc pt asta
 - retin cursorul in functie asa ca pot continua printarea lejer.
 
-_____________________________________Find______________________________________
-
-cum am spus, daca nu era faptul ca trebuia sa afisez si aici, n as fi facut 
-functia pt afisarea unui sg element.
+## Find
 
 - se parcurge pana la index
 - se afiseaza o data de la arr + lungimea parcursa pana la index
