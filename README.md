@@ -78,8 +78,3 @@ _______________________________________________________________________________
 sidenote pt ca simt ca e important de mentionat: pe parcurs iau diverse 
 variabile din vector sau le bag. cam orice legat de vectorul asta se poate face 
 doar cu memcpy sau cu memmove, pentru ca nu iti poti accesa informatia asa usor.
-mi s a parut interesant sa atribui valori la inturi cu memmove, pt ca pana acum
-eram obisnuita cu memmove pentru stringuri si atat, insa aici te ajuta sa 
-introduci fix informatia de care ai nevoie si fix cat ai nevoie de ea. tu alegi
-ce face vectorul pentru tine. very cool
-am test maine... noapte buna :)
